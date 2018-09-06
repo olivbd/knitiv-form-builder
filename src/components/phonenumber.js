@@ -47,7 +47,9 @@ module.exports = function(app) {
           '<form-builder-option property="description"></form-builder-option>' +
           '<form-builder-option property="tooltip"></form-builder-option>' +
           '<form-builder-option property="errorLabel"></form-builder-option>' +
-          '<form-builder-option property="inputMask"></form-builder-option>' +
+          '<form-builder-option property="inputMask" ng-if="!component.allowMultipleMasks"></form-builder-option>' +
+          '<form-builder-option property="allowMultipleMasks" type="checkbox" label="Allow multiple masks"></form-builder-option>' +
+          '<value-builder ng-if="component.allowMultipleMasks" data="component.inputMasks" label="Input Masks" label-label="Label" value-label="Mask" label-property="label" value-property="mask" no-autocomplete-value="true"></value-builder>' +
           '<form-builder-option property="prefix"></form-builder-option>' +
           '<form-builder-option property="suffix"></form-builder-option>' +
           '<form-builder-option property="customClass"></form-builder-option>' +
@@ -58,7 +60,7 @@ module.exports = function(app) {
           '<form-builder-option property="persistent"></form-builder-option>' +
           '<form-builder-option property="encrypted" class="form-builder-premium"></form-builder-option>' +
           '<form-builder-option property="hidden"></form-builder-option>' +
-          '<form-builder-option property="autofocus" type="checkbox" label="Initial Focus" tooltip="Make this field the initially focused element on this form."></form-builder-option>' +
+          '<form-builder-option property="autofocus"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
           '<form-builder-option property="dataGridLabel"></form-builder-option>' +
           '<form-builder-option property="tableView"></form-builder-option>' +

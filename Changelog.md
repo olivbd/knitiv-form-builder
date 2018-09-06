@@ -4,6 +4,86 @@ All notable changes to this project will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.36.0
+### Changed
+ - Upgraded dependencies and renderer.
+
+### Added
+ - Custom properties section to Selectboxes.
+
+### Fixed
+ - Do not include columns in component with label.
+
+## 2.35.11
+### Fixed
+ - Problem where the pdf builder would get the wrong key.
+
+## 2.35.10
+### Fixed
+ - Problem where components without ids could not be used in pdf builder.
+
+## 2.35.8, 2.35.9
+### Fixed
+ - Fixed issues where the builder would not allow updates.
+
+## 2.35.7
+### Fixed
+ - Problems where the form would get in a decoupled state for PDF building.
+
+## 2.35.6
+### Fixed
+ - The PDF builder to not delete any changes to the form that are made.
+
+## 2.35.4, 2.35.5
+### Fixed
+ - The PDF builder to work with cross-site forms.
+
+## 2.35.3
+### Changed
+ - Upgraded dependencies.
+
+## 2.34.0
+### Added
+ - Input Format option for TextField and TextArea components.
+ - Multiple masks settings for text field and phone number components
+
+### Changed
+ - Upgrade all depdencies.
+
+## 2.33.0
+### Added
+ - Option to calculate values on server.
+ - Option to button component for saving state and deleting.
+ - Tooltips for editbuttons.
+
+## 2.32.0
+### Changed
+ - Upgrade renderer dependency.
+
+### Fixed
+- Autofocus option.
+
+### Added
+ - Collapsible and Collapsed fields for Panel and FieldSet.
+
+## 2.31.1
+### Added
+ - `moment` description to calculated and conditional sections.
+ - Calculated value section for DateTime component.
+
+### Changed
+ - Upgrade ng-formio to 2.31.1
+ - Upgrade formiojs to 2.30.1
+ - Structure of form builder page for DateTime component.
+
+## 2.31.0
+### Changed
+ - Upgrade ng-formio to v2.31.0
+ - Upgrade formio.js to v2.30.0
+
+### Added
+ - Decimal limit settings and configurations.
+
 ## 2.30.2
 ### Changed
  - Upgraded dependencies.
@@ -45,7 +125,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
  - The ability to set any component to show their label within a datagrid.
- 
+
 ### Changed
  - How the labels are shown when they have "hideLabel" checked, where they are just a tooltip now.
 

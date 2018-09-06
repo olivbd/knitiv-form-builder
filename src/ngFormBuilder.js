@@ -2,6 +2,7 @@
 /*global window: false, console: false, jQuery: false */
 /*jshint browser: true */
 var fs = require('fs');
+var utils = require('formiojs/utils').default;
 
 var app = angular.module('ngFormBuilder', [
   'formio',
@@ -27,43 +28,67 @@ app.directive('formBuilderDraggable', function() {
     link: function(scope, element) {
       var el = element[0];
       el.draggable = true;
-      el.addEventListener('dragstart', function(event) {
-        var dragData = scope.formBuilderDraggable;
-        var dropZone = document.getElementById('fb-drop-zone');
-        if (dropZone) {
-          dropZone.style.zIndex = 10;
-        }
-        event.dataTransfer.setData('Text', JSON.stringify(dragData));
-        return false;
-      }, false);
-    }
-  };
-});
+      var formBuilder = null;
+      var dropZone = null;
 
-app.directive('formBuilderDroppable', function() {
-  return {
-    restrict: 'A',
-    link: function(scope, element) {
-      var el = element[0];
-      el.addEventListener('dragover', function(event) {
+      // Drag over event handler.
+      var dragOver = function(event) {
         if (event.preventDefault) {
           event.preventDefault();
         }
         return false;
-      }, false);
-      el.addEventListener('drop', function(event) {
+      };
+
+      // Drag end event handler.
+      var dragEnd = function() {
+        jQuery(dropZone).removeClass('enabled');
+        dropZone.removeEventListener('dragover', dragOver, false);
+        dropZone.removeEventListener('drop', dragDrop, false);
+      };
+
+      // Drag drop event handler.
+      var dragDrop = function(event) {
         if (event.preventDefault) {
           event.preventDefault();
         }
         if (event.stopPropagation) {
           event.stopPropagation();
         }
-        var dragData = JSON.parse(event.dataTransfer.getData('text/plain'));
-        var dropOffset = jQuery(el).offset();
-        el.style.zIndex = 0;
+        var dropOffset = jQuery(dropZone).offset();
+        var dragData = angular.copy(scope.formBuilderDraggable);
         dragData.fbDropX = event.pageX - dropOffset.left;
         dragData.fbDropY = event.pageY - dropOffset.top;
-        scope.$emit('fbDragDrop', dragData);
+        angular.element(dropZone).scope().$emit('fbDragDrop', dragData);
+        dragEnd();
+        return false;
+      };
+
+      el.addEventListener('dragstart', function(event) {
+        event.stopPropagation();
+        event.dataTransfer.setData('text/plain', 'true');
+        if (!dropZone) {
+          dropZone = document.getElementById('fb-drop-zone');
+        }
+        if (!dropZone) {
+          return console.warn('Cannot find fb-drop-zone');
+        }
+        if (!formBuilder) {
+          formBuilder = document.getElementById('fb-pdf-builder');
+        }
+        if (!formBuilder) {
+          return console.warn('Cannot find fb-pdf-builder');
+        }
+
+        var builderRect = utils.getElementRect(formBuilder);
+        dropZone.style.width = builderRect && builderRect.width ? builderRect.width + 'px' : '100%';
+        dropZone.style.height = builderRect && builderRect.height ? builderRect.height + 'px' : '1000px';
+        jQuery(dropZone).addClass('enabled');
+        dropZone.addEventListener('dragover', dragOver, false);
+        dropZone.addEventListener('drop', dragDrop, false);
+        return false;
+      }, false);
+      el.addEventListener('dragend', function(event) {
+        dragEnd();
         return false;
       }, false);
     }
@@ -91,6 +116,8 @@ app.directive('formBuilderOption', require('./directives/formBuilderOption'));
 app.directive('labelValidator', require('./directives/labelValidator'));
 
 app.directive('formBuilderTable', require('./directives/formBuilderTable'));
+
+app.directive('formBuilderOptionInputFormat', require('./directives/formBuilderOptionInputFormat'));
 
 app.directive('formBuilderOptionInputsLabelPosition', require('./directives/formBuilderOptionInputsLabelPosition'));
 
@@ -121,6 +148,8 @@ app.directive('valueBuilderWithShortcuts', require('./directives/valueBuilderWit
 app.directive('objectBuilder', require('./directives/objectBuilder'));
 
 app.directive('formBuilderConditional', require('./directives/formBuilderConditional'));
+
+app.directive('multiMaskInput', require('./directives/multiMaskInput'));
 
 /**
  * This workaround handles the fact that iframes capture mouse drag

@@ -42,7 +42,6 @@ module.exports = function(app) {
           '<form-builder-option-options-label-position></form-builder-option-options-label-position>' +
           '<form-builder-option property="tooltip"></form-builder-option>' +
           '<value-builder-with-shortcuts form="form" component="component" data="component.values" default="component.defaultValue" label="Values" tooltip-text="The radio button values that can be picked for this field. Values are text submitted with the form data. Labels are text that appears next to the radio buttons on the form."></value-builder-with-shortcuts>' +
-          '<form-builder-option property="tooltip"></form-builder-option>' +
           '<form-builder-option property="errorLabel"></form-builder-option>' +
           '<form-builder-option property="customClass"></form-builder-option>' +
           '<form-builder-option property="tabindex"></form-builder-option>' +
@@ -53,6 +52,7 @@ module.exports = function(app) {
           '<form-builder-option property="fieldSet" type="checkbox" label="Wrap inside field set" title="Displays the radio buttons wrapped by a field-set and legend."></form-builder-option>' +
           '<form-builder-option property="encrypted" class="form-builder-premium"></form-builder-option>' +
           '<form-builder-option property="hidden"></form-builder-option>' +
+          '<form-builder-option property="autofocus"></form-builder-option>' +
           '<form-builder-option property="disabled"></form-builder-option>' +
           '<form-builder-option property="dataGridLabel"></form-builder-option>' +
           '<form-builder-option property="tableView"></form-builder-option>' +
@@ -62,7 +62,12 @@ module.exports = function(app) {
       // Create the API markup.
       $templateCache.put('formio/components/selectboxes/api.html',
         '<ng-form>' +
-          '<form-builder-option-key></form-builder-option-key>' +
+        '<form-builder-option-key></form-builder-option-key>' +
+        '<uib-accordion>' +
+        '<div uib-accordion-group heading="Custom Properties" class="panel panel-default">' +
+        '<object-builder data="component.properties" label="Custom Properties" tooltip-text="This allows you to configure any custom properties for this component." />' +
+        '</div>' +
+        '</uib-accordion>' +
         '</ng-form>'
       );
 
@@ -70,7 +75,6 @@ module.exports = function(app) {
       $templateCache.put('formio/components/selectboxes/validate.html',
         '<ng-form>' +
           '<form-builder-option property="validate.required"></form-builder-option>' +
-        '<form-builder-option property="autofocus" type="checkbox" label="Add autofocus" tooltip="Set autofocus attribute to the field"></form-builder-option>' +
           '<form-builder-option property="validate.customMessage"></form-builder-option>' +
           '<form-builder-option-custom-validation></form-builder-option-custom-validation>' +
         '</ng-form>'
