@@ -37651,8 +37651,6 @@ module.exports = [
 
     $scope.addComponent = function(component, index) {
 
-      delete component.hideLabel;
-
       // Allow changing default lock options.
       if ($scope.options && $scope.options.noLockKeys) {
         delete component.source;
@@ -37901,7 +37899,7 @@ module.exports = [
 
     $scope.copyComponent = function(component) {
       window.sessionStorage.setItem('componentClipboard', JSON.stringify(angular.copy(component)));
-    }
+    };
 
     $scope.pasteComponent = function() {
       var component;
@@ -37915,7 +37913,7 @@ module.exports = [
       if (component) {
         $scope.cloneComponent(component);
       }
-    }
+    };
 
     // Add to scope so it can be used in templates
     $scope.dndDragIframeWorkaround = dndDragIframeWorkaround;

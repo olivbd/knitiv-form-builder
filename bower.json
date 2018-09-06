@@ -1,12 +1,13 @@
 {
-  "name": "ng-formio-builder",
+  "name": "knitiv-form-builder",
   "main": [
     "dist/ngFormBuilder.js",
     "css/ngFormBuilder.css"
   ],
   "version": "2.36.1",
   "authors": [
-    "Travis Tidwell <travis@form.io>"
+    "Travis Tidwell <travis@form.io>",
+    "Olivier Béraud <olivierberaud@free.fr>"
   ],
   "description": "The Angular.JS form builder.",
   "license": "MIT",
