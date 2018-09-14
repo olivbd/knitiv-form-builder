@@ -1,10 +1,10 @@
 {
-  "name": "knitiv-form-builder",
+  "name": "ng-formio-builder",
   "main": [
     "dist/ngFormBuilder.js",
     "css/ngFormBuilder.css"
   ],
-  "version": "2.36.7",
+  "version": "2.36.8",
   "authors": [
     "Travis Tidwell <travis@form.io>",
     "Olivier Béraud <olivierberaud@free.fr>"
@@ -22,9 +22,9 @@
     "angular-drag-and-drop-lists": "^2.1.0",
     "angular-bootstrap": "^2.5.0",
     "ng-dialog": "^1.4.0",
-    "ng-formio": "knitiv-form^2.36.6",
     "ng-tags-input": "^3.2.0",
-    "angular-ckeditor": "^1.0.3"
+    "angular-ckeditor": "^1.0.3",
+    "ng-formio": "knitiv-form#2.36.9"
   },
   "devDependencies": {
     "font-awesome": "^4.6.3"

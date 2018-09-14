@@ -1,6 +1,6 @@
 {
-  "name": "knitiv-form-builder",
-  "version": "2.36.6",
+  "name": "ng-formio-builder",
+  "version": "2.36.8",
   "description": "The Angular.js form builder component.",
   "main": "dist/ngFormBuilder.js",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:olivbd/knitiv-form-builder.git"
+    "url": "git@github.com:olivbd/ng-formio-builder.git"
   },
   "author": "Olivier Béraud <olivierberaud@free.fr>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/olivbd/knitiv-form-builder/issues"
+    "url": "https://github.com/olivbd/ng-formio-builder/issues"
   },
-  "homepage": "https://github.com/olivbd/knitiv-form-builder",
+  "homepage": "https://github.com/olivbd/ng-formio-builder",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
